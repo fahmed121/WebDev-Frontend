@@ -1,13 +1,16 @@
 import './App.css'
+import { Header } from './components/Header'
+import Nav from './components/Nav'
 
-function App() {
- 
-
+const App = () => {
   return (
-    <div>
-      <h1>SupremeGrill</h1>
-    </div>
+    <>
+    <Header />
+    <Nav />
+    
+    </>
   )
 }
 
-export default App;
+export default App; 
+
