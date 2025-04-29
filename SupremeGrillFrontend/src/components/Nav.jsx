@@ -1,17 +1,37 @@
+import { Link } from "react-router-dom";
 
-function Nav(){
-    return (
-        
-        <nav className ="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className = "navbar-nav">
-            <a className ='nav-link' href ='#'>Menu</a>
-            <a className ='nav-link' href ='#'>Basket</a>
-            <a className ='nav-link' href ='#'>Profile</a>
-            <a className ='nav-link' href ='#'>About Us</a>
-            </div>
-        </nav>
-        
-    )
+function Nav() {
+  return (
+    <nav>
+      <ul
+        className="nav justify-content-end nav-justified nav-underline navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body"
+        data-bs-theme="dark"
+      >
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <li className="nav-item">
+            <Link className="nav-link active" aria-current="page" to="/menu">
+              Menu
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/basket">
+              Basket
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/profile">
+              Profile
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link " to="about">
+              About Us
+            </Link>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  );
 }
 
 export default Nav;
