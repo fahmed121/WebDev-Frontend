@@ -6,10 +6,10 @@ import Menu from "./pages/Menu.Jsx";
 import Basket from "./pages/Basket.Jsx";
 import Profile from "./pages/Profile.Jsx";
 import About from "./pages/About.Jsx";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Staff from "./pages/Staff.jsx";
 import Login from "./pages/Login.Jsx";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
