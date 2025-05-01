@@ -8,6 +8,8 @@ import Profile from "./pages/Profile.Jsx";
 import About from "./pages/About.Jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Staff from "./pages/Staff.jsx";
+import Login from "./pages/Login.Jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
   {
     path: "/About",
     element: <About />,
+  },
+  {
+    path: "/Staff",
+    element: <Staff />,
+  },
+  {
+    path: "/Login",
+    element: <Login />,
   },
 ]);
 

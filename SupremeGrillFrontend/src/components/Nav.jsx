@@ -24,9 +24,19 @@ function Nav() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link " to="about">
+            <Link className="nav-link " to="/about">
               About Us
             </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link " to="/staff">
+              Staff
+            </Link>
+            <li className="nav-item">
+              <Link className="nav-link " to="/login">
+                Log In
+              </Link>
+            </li>
           </li>
         </div>
       </ul>
