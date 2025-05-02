@@ -1,5 +1,5 @@
 import Card from "./Cards";
-import Counter from "./Counter";
+import "../styles/CardContainer.css";
 
 const CardContainer = ({ item }) => {
   return (
@@ -7,6 +7,17 @@ const CardContainer = ({ item }) => {
       {/* {item.map((item) => (
         <Counter key={item.id} item={item} />
       ))}   */}
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       <Card />
     </div>
   );

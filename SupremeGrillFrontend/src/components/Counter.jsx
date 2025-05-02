@@ -13,13 +13,15 @@ function Counter(onChange) {
       <Button
         label="-"
         style={{
-          margin: "1px",
+          margin: "0px",
           backgroundColor: "red",
           color: "white ",
           padding: "5px 10px",
           fontSize: "1.1rem",
         }}
-        onClick={() => setCount(count - 1)}
+        onClick={() =>
+          setCount((lastCount) => (lastCount - 1 < 0 ? 0 : lastCount - 1))
+        }
       >
         -
       </Button>

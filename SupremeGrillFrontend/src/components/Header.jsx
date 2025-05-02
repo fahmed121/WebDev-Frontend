@@ -1,8 +1,9 @@
-
- const Header =()=> {
-    return <>
-    <h1> Supreme Grill</h1>
+const Header = () => {
+  return (
+    <>
+      <h1> Supreme Grill</h1>
     </>
-}
+  );
+};
 
-export default Header
+export default Header;

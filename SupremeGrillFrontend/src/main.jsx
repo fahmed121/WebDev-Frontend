@@ -9,6 +9,7 @@ import About from "./pages/About.jsx";
 import Staff from "./pages/Staff.jsx";
 import Login from "./pages/Login.jsx";
 import Layout from "./components/Layout.jsx";
+import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([

@@ -4,10 +4,10 @@
     box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
     background-color: rgb(46, 46, 51);
     padding: 20px;
-    margin: 10px;
     text-align: center;
+    align-items: center;
     max-width: 200px;
-    display: inline-block;
+    display: flex;
     color: white;
 
 }
@@ -24,4 +24,9 @@
     transform: scale(1.2);
 
      
+}
+@media (max-width: 768px) {
+    .card{
+        max-width: 100%;
+    }
 }

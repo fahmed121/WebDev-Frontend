@@ -1,44 +1,51 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import "../styles/nav.css";
+import { NavLink } from "react-router-dom";
 function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav>
-      <ul
-        className="nav justify-content-end nav-justified nav-underline navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body"
-        data-bs-theme="dark"
-      >
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <li className="nav-item">
-            <Link className="nav-link active" aria-current="page" to="/menu">
-              Menu
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/basket">
-              Basket
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/profile">
-              Profile
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link " to="/about">
-              About Us
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link " to="/staff">
-              Staff
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link " to="/login">
-              Log In
-            </Link>
-          </li>
-        </div>
+    <nav className="nav">
+      <div className="nav-header">
+        <button className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
+          ☰
+        </button>
+      </div>
+      <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+        <li>
+          <NavLink
+            className="nav-link text-white"
+            aria-current="page"
+            to="/menu"
+          >
+            Menu
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-link text-white" to="/basket">
+            Basket
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-link text-white" to="/profile">
+            Profile
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-link text-white" to="/about">
+            About Us
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-link text-white" to="/staff">
+            Staff
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className="nav-link text-white" to="/login">
+            Log In
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

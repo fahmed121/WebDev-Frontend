@@ -1,0 +1,16 @@
+.footer{
+
+    background-color: grey;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 1rem;
+
+}
+
+@media(max-width:768px){
+    .footer{
+        width: 100%;
+    }
+}
