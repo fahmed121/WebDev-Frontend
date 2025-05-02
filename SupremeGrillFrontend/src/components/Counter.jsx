@@ -11,12 +11,13 @@ function Counter(onChange) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
       <Button
+        label="-"
         style={{
           margin: "1px",
           backgroundColor: "red",
           color: "white ",
-          padding: "1px 2px",
-          fontSize: "1.2rem",
+          padding: "5px 10px",
+          fontSize: "1.1rem",
         }}
         onClick={() => setCount(count - 1)}
       >
@@ -28,8 +29,8 @@ function Counter(onChange) {
         style={{
           backgroundColor: "green",
           color: "white ",
-          padding: "1px 2px",
-          fontSize: "1.5rem",
+          padding: "5px 10px",
+          fontSize: "1.1rem",
         }}
         onClick={() => setCount(count + 1)}
       >
