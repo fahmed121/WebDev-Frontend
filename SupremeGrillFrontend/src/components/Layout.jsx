@@ -4,13 +4,13 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
-    <>
+    <div className="layout">
       <Header />
       <Nav />
-
+      <body></body>
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 
