@@ -11,6 +11,7 @@ import Login from "./pages/Login.jsx";
 import Layout from "./components/Layout.jsx";
 import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Register from "./components/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "Login",
         element: <Login />,
+      },
+      {
+        path: "Register",
+        element: <Register />,
       },
     ],
   },

@@ -2,25 +2,32 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/Login.css";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
-const Login = (email, password) => {
-  const [login, SetLogin] = useState({});
-
+const Register = (email, password) => {
+  const [Register, SetRegister] = useState({});
+  const [confirmPassword, SetConfirmPassword] = useState("");
   const apiURL = import.meta.env.VITE_BACKEND_API_URL;
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    SetLogin((values) => ({ ...values, [name]: value }));
+    SetRegister((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (password != confirmpassword) {
+      setError("Passwords do not match!");
+      return;
+    }
     try {
-      const response = await axios.post(`${apiURL}/Accounts/login`, login, {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${apiURL}/Accounts/Register`,
+        Register,
+        {
+          email,
+          password,
+        }
+      );
 
       const token = response.data.token;
       console.log("response", response.data);
@@ -33,7 +40,7 @@ const Login = (email, password) => {
 
   return (
     <div className="user-container">
-      <h1> Login</h1>
+      <h1> Register</h1>
 
       <form onSubmit={handleSubmit}>
         <label>
@@ -41,7 +48,7 @@ const Login = (email, password) => {
           <input
             type="text"
             name="email"
-            value={login.email || ""}
+            value={Register.email || ""}
             onChange={handleChange}
           />
         </label>
@@ -51,13 +58,23 @@ const Login = (email, password) => {
           <input
             type="text"
             name="password"
-            value={login.password || ""}
+            value={Register.password || ""}
             onChange={handleChange}
           />
         </label>
-
+        <label>
+          {" "}
+          Confirm Password:
+          <input
+            type="text"
+            name="password"
+            value={Register.confirmPassword || ""}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </label>
         <Button
-          label="Submit"
+          label="Register"
           style={{
             backgroundColor: "grey",
             color: "white ",
@@ -66,11 +83,8 @@ const Login = (email, password) => {
           }}
           onClick={handleSubmit}
         />
-        <Link className="nav-link text-white" to="/register">
-          Register
-        </Link>
       </form>
     </div>
   );
 };
-export default Login;
+export default Register;
