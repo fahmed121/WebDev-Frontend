@@ -2,11 +2,12 @@ import { Button } from "bootstrap";
 import PizzaImage from "../assets/Pizza.jpg";
 import "../styles/Card.css";
 import Counter from "./Counter";
-import { useState } from "react";
+import { useContext } from "react";
 
 const Card = ({ title, description, cost }) => {
   console.log(title, description, cost);
-
+  // const { MenuItems } = useContext(MenuItemsContext);
+  // const handleSubmit = async (event) => {};
   return (
     <div className="card">
       <img

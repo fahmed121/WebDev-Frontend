@@ -1,0 +1,41 @@
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 2.5rem;
+    background-color: #121212; 
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+  }
+  .login-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-container input {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    color: #f5f5f5;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .login-container input::placeholder {
+    color: #888;
+  }
+  
+  .login-container input {
+    display: block;              
+    margin: 0 auto 1rem auto;    
+    width: 100%;                
+    max-width: 300px;            
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    color: #f5f5f5;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
