@@ -25,6 +25,19 @@
 
      
 }
+.submit-button {
+    background-color: #333; 
+    color: #eee; 
+    margin: 1rem;
+    padding: 5px 20px;
+    border: 1px solid #555; 
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+
 @media (max-width: 768px) {
     .card{
         max-width: 100%;

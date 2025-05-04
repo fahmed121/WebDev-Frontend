@@ -5,7 +5,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const App = () => {
-  return <></>;
+  return (
+    <div className="home">
+      <h1>Welcome to SupremeGrill</h1>
+      <p>Select an item from the menu to get started.</p>
+    </div>
+  );
 };
 
 export default App;
