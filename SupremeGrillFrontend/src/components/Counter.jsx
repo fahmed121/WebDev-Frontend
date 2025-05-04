@@ -22,9 +22,7 @@ function Counter(onChange) {
         onClick={() =>
           setCount((lastCount) => (lastCount - 1 < 0 ? 0 : lastCount - 1))
         }
-      >
-        -
-      </Button>
+      ></Button>
       <span style={{ minWidth: "50px", textAlign: "center" }}>{count}</span>
       <Button
         label="+"
@@ -35,9 +33,7 @@ function Counter(onChange) {
           fontSize: "1.1rem",
         }}
         onClick={() => setCount(count + 1)}
-      >
-        -
-      </Button>
+      ></Button>
     </div>
   );
 }

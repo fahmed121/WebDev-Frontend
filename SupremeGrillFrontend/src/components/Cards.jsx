@@ -1,9 +1,12 @@
+import { Button } from "bootstrap";
 import PizzaImage from "../assets/Pizza.jpg";
 import "../styles/Card.css";
 import Counter from "./Counter";
+import { useState } from "react";
 
 const Card = ({ title, description, cost }) => {
   console.log(title, description, cost);
+
   return (
     <div className="card">
       <img
@@ -15,6 +18,7 @@ const Card = ({ title, description, cost }) => {
       <p>{description}</p>
       <p>{cost}</p>
       <Counter />
+      <input type="submit" className="submit-button" value="Submit" />
     </div>
   );
 };
