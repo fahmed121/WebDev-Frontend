@@ -1,13 +1,23 @@
-import { Button } from "bootstrap";
+import Button from "./Button";
 import PizzaImage from "../assets/Pizza.jpg";
 import "../styles/Card.css";
 import Counter from "./Counter";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { BasketContext, useBasket } from "../context/BasketContext";
 
-const Card = ({ title, description, cost }) => {
-  console.log(title, description, cost);
-  // const { MenuItems } = useContext(MenuItemsContext);
-  // const handleSubmit = async (event) => {};
+const Card = ({ item }) => {
+  const { addBasket } = useBasket();
+  const [quantity, setQuantity] = useState(0);
+
+  const handleQtyChange = (newQuantity) => {
+    console.log("Setting Quantity:", newQuantity);
+    setQuantity(newQuantity);
+  };
+
+  const handleAddBasket = (item, qty) => {
+    console.log("Adding to basket:", item, qty);
+    addBasket(item, qty);
+  };
   return (
     <div className="card">
       <img
@@ -15,11 +25,15 @@ const Card = ({ title, description, cost }) => {
         alt="Currently Unavailable"
         className="card-image"
       />
-      <h2>{title}</h2>
-      <p>{description}</p>
-      <p>{cost}</p>
-      <Counter />
-      <input type="submit" className="submit-button" value="Submit" />
+      <h2>{item.itemName}</h2>
+      <p>{item.description}</p>
+      <p>{item.price}</p>
+
+      <Counter onChange={handleQtyChange} />
+      <Button
+        label="Add to Basket"
+        onClick={() => handleAddBasket(item, quantity)}
+      />
     </div>
   );
 };

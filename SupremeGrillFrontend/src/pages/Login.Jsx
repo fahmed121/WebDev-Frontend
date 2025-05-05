@@ -2,12 +2,16 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/Login.css";
 import Button from "../components/Button";
-import { Link } from "react-router-dom";
-const Login = (email, password) => {
+import { Link, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { UseAuth } from "../context/AuthContext";
+
+const Login = () => {
   const [login, SetLogin] = useState({});
-
+  const navigate = useNavigate();
   const apiURL = import.meta.env.VITE_BACKEND_API_URL;
-
+  const { setUser } = UseAuth();
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -17,14 +21,16 @@ const Login = (email, password) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${apiURL}/Accounts/login`, login, {
-        email,
-        password,
-      });
+      const response = await axios.post(`${apiURL}/Accounts/login`, login);
 
       const token = response.data.token;
+
       console.log("response", response.data);
-      alert("Logged in!");
+      localStorage.setItem("token", token);
+      const user = jwtDecode(token);
+      setUser(user);
+
+      navigate("/menu");
     } catch (error) {
       console.error("Error Logging in", error);
       alert("Try again");
@@ -57,6 +63,7 @@ const Login = (email, password) => {
         </label>
 
         <Button
+          class="authbutton"
           label="Submit"
           style={{
             backgroundColor: "grey",
@@ -66,7 +73,7 @@ const Login = (email, password) => {
           }}
           onClick={handleSubmit}
         />
-        <Link className="nav-link text-white" to="/register">
+        <Link className="authbutton" to="/register">
           Register
         </Link>
       </form>

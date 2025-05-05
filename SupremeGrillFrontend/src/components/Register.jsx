@@ -2,9 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/Login.css";
 import Button from "../components/Button";
-const Register = (email, password) => {
+import { Link } from "react-router-dom";
+const Register = () => {
   const [Register, SetRegister] = useState({});
-  const [confirmPassword, SetConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   const apiURL = import.meta.env.VITE_BACKEND_API_URL;
 
   const handleChange = (event) => {
@@ -15,25 +17,20 @@ const Register = (email, password) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password != confirmpassword) {
-      setError("Passwords do not match!");
+    if (Register.password != confirmPassword) {
       return;
     }
     try {
       const response = await axios.post(
         `${apiURL}/Accounts/Register`,
-        Register,
-        {
-          email,
-          password,
-        }
+        Register
       );
 
       const token = response.data.token;
       console.log("response", response.data);
-      alert("Logged in!");
+      alert("Registered in!");
     } catch (error) {
-      console.error("Error Logging in", error);
+      console.error("Error Registering", error);
       alert("Try again");
     }
   };
@@ -67,13 +64,15 @@ const Register = (email, password) => {
           Confirm Password:
           <input
             type="text"
-            name="password"
-            value={Register.confirmPassword || ""}
+            name="confirmPassword"
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </label>
         <Button
+          className="authbutton"
+          type="Submit"
           label="Register"
           style={{
             backgroundColor: "grey",
@@ -83,6 +82,9 @@ const Register = (email, password) => {
           }}
           onClick={handleSubmit}
         />
+        <Link className="authbutton" to="/login">
+          Click here to go back to login
+        </Link>
       </form>
     </div>
   );

@@ -9,10 +9,13 @@ import About from "./pages/About.jsx";
 import Staff from "./pages/Staff.jsx";
 import Login from "./pages/Login.jsx";
 import Layout from "./components/Layout.jsx";
-import axios from "axios";
+import BasketContextProvider from "./context/BasketContext.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Register from "./components/Register.jsx";
-
+import { useContext } from "react";
+import AuthProvider from "./context/AuthContext.jsx";
+import ProtectedRoutes from "./components/ProtectedRoutes.jsx";
+import Unauthorised from "./pages/Unauthorised.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,7 +41,12 @@ const router = createBrowserRouter([
       },
       {
         path: "Staff",
-        element: <Staff />,
+
+        element: (
+          <ProtectedRoutes>
+            <Staff />
+          </ProtectedRoutes>
+        ),
       },
       {
         path: "Login",
@@ -48,12 +56,20 @@ const router = createBrowserRouter([
         path: "Register",
         element: <Register />,
       },
+      {
+        path: "unauthorised",
+        element: <Unauthorised />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <BasketContextProvider>
+        <RouterProvider router={router} />
+      </BasketContextProvider>
+    </AuthProvider>
   </StrictMode>
 );

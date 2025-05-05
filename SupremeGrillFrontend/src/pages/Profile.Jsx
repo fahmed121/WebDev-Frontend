@@ -1,6 +1,6 @@
 import axios from "axios";
 import ProfileForm from "../components/ProfileForm";
-
+import "../styles/Profile.css";
 const Profile = () => {
   return (
     <div className="Profile">

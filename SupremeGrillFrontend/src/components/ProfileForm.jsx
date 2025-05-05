@@ -28,46 +28,48 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Enter your first name:
-        <input
-          type="text"
-          name="custFirstName"
-          value={customer.custFirstName || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        {" "}
-        Enter your Surname:
-        <input
-          type="text"
-          name="custLastName"
-          value={customer.custLastName || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Enter your Telephone Number:
-        <input
-          type="number"
-          name="telephone"
-          value={customer.telephone || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Enter your email address:
-        <input
-          type="text"
-          name="custEmail"
-          value={customer.custEmail || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <label>
+          Enter your first name:
+          <input
+            type="text"
+            name="custFirstName"
+            value={customer.custFirstName || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          {" "}
+          Enter your Surname:
+          <input
+            type="text"
+            name="custLastName"
+            value={customer.custLastName || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Enter your Telephone Number:
+          <input
+            type="number"
+            name="telephone"
+            value={customer.telephone || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Enter your email address:
+          <input
+            type="text"
+            name="custEmail"
+            value={customer.custEmail || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
   );
 };
 
