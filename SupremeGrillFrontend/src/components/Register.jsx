@@ -2,44 +2,42 @@ import { useState } from "react";
 import axios from "axios";
 import "../styles/Login.css";
 import Button from "../components/Button";
-import { Link, useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
-import { UseAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
+const Register = () => {
+  const [Register, SetRegister] = useState({});
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-const Login = () => {
-  const [login, SetLogin] = useState({});
-  const navigate = useNavigate();
   const apiURL = import.meta.env.VITE_BACKEND_API_URL;
-  const { setUser } = UseAuth();
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    SetLogin((values) => ({ ...values, [name]: value }));
+    SetRegister((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (Register.password != confirmPassword) {
+      return;
+    }
     try {
-      const response = await axios.post(`${apiURL}/Accounts/login`, login);
+      const response = await axios.post(
+        `${apiURL}/Accounts/Register`,
+        Register
+      );
 
       const token = response.data.token;
-
       console.log("response", response.data);
-      localStorage.setItem("token", token);
-      const user = jwtDecode(token);
-      setUser(user);
-
-      navigate("/menu");
+      alert("Registered in!");
     } catch (error) {
-      console.error("Error Logging in", error);
+      console.error("Error Registering", error);
       alert("Try again");
     }
   };
 
   return (
     <div className="user-container">
-      <h1> Login</h1>
+      <h1> Register</h1>
 
       <form onSubmit={handleSubmit}>
         <label>
@@ -47,7 +45,7 @@ const Login = () => {
           <input
             type="text"
             name="email"
-            value={login.email || ""}
+            value={Register.email || ""}
             onChange={handleChange}
           />
         </label>
@@ -57,14 +55,25 @@ const Login = () => {
           <input
             type="text"
             name="password"
-            value={login.password || ""}
+            value={Register.password || ""}
             onChange={handleChange}
           />
         </label>
-
+        <label>
+          {" "}
+          Confirm Password:
+          <input
+            type="text"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </label>
         <Button
-          class="authbutton"
-          label="Submit"
+          className="authbutton"
+          type="Submit"
+          label="Register"
           style={{
             backgroundColor: "grey",
             color: "white ",
@@ -73,11 +82,11 @@ const Login = () => {
           }}
           onClick={handleSubmit}
         />
-        <Link className="authbutton" to="/register">
-          Register
+        <Link className="authbutton" to="/login">
+          Click here to go back to login
         </Link>
       </form>
     </div>
   );
 };
-export default Login;
+export default Register;

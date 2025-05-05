@@ -1,11 +1,11 @@
 import axios from "axios";
-import Form from "../components/Form";
-
+import ProfileForm from "../components/ProfileForm";
+import "../styles/Profile.css";
 const Profile = () => {
   return (
     <div className="Profile">
       <h1> Profile</h1>
-      <Form />
+      <ProfileForm />
     </div>
   );
 };
